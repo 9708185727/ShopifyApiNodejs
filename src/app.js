@@ -6,7 +6,7 @@ import auth from "./routes/auth.js"
 import connectDB from "./routes/database.js";
 import logger from "./middlewares/logger.js";
 import cookieParser from "cookie-parser";
-
+import cors from "cors"
 const app = express();
 app.use(logger);
 //parser application
@@ -16,6 +16,9 @@ app.use(bodyParser.json());
 dotenv.config();
 connectDB();
 app.use(cookieParser());
+app.use(cors({
+  origin:"http://localhost:3000"
+}))
 const PORT=process.env.PORT;
 
 app.get("/", (req, res) => {
@@ -28,7 +31,7 @@ app.get("/", (req, res) => {
   });
 });
 app.use("/api/products",products);
-app.use("/api/users",auth)
+app.use("/api/auth",auth)
 
 
 // app.get("/about",(req,res)=>{

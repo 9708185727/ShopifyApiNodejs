@@ -1,46 +1,27 @@
-
-
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 function auth(req, res, next) {
-  try {
-    // Extract the 'cookie' header from the request
+ 
     const cookie = req.headers.cookie;
+    console.log(cookie);
 
-    // Check if the cookie exists
-    if (!cookie) {
-      return res.status(401).send("Unauthorized: No cookie found");
-    }
+    if (!cookie) return res.status(401).send("Unauthorized");
 
-    // Extract the token from the cookie (assuming it's in the format 'token=YOUR_TOKEN')
-    const token = cookie.split('=')[1];
+    // Extract the token from the cookie (assuming it's in the format 'authToken=YOUR_TOKEN')
+    const authToken = cookie.split("=")[1];
 
-    // Check if the token exists
-    if (!token) {
-      return res.status(401).send("Unauthorized: Token not found in cookie");
-    }
+    if (!authToken) return res.status(401).send("Unauthorized");
 
     // Verify the JWT token
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+    jwt.verify(authToken, process.env.JWT_SECRET, function (error, data) {
       if (error) {
         // If token verification fails, send a 403 (Forbidden) response
-        return res.status(403).send("Forbidden: Invalid token");
+        return res.status(401).send("Unauthorized");
       }
-
-      // Attach the decoded user data to the request object
-      req.user = decoded;
-
-      // Proceed to the next middleware or route handler
+      req.user = data.data;
       next();
     });
-  } catch (err) {
-    // Catch any unexpected errors and send a 500 (Internal Server Error) response
-    console.error("Authentication error:", err);
-    return res.status(500).send("Internal Server Error");
-  }
+
 }
 
 export default auth;
-
-
-

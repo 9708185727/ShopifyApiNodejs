@@ -49,7 +49,7 @@ import mongoose from "mongoose";
     },
     roles:{
         type:[String],
-        default:"User",
+        default:["USER"],
     },
     createdAt:{
         type:Date,

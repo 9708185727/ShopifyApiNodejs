@@ -17,10 +17,9 @@ const userRegister = async (req, res) => {
   try {
     const userAdd = await userService.userCreate(userData);
 
-    const authToken=createAuthToken(userAdd);
+    const token = createAuthToken(userAdd);
     // console.log(authToken);
-    res.status(201).json({ ...userAdd, authToken});
-
+    res.status(201).json({ ...userAdd, token });
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -29,15 +28,21 @@ const userRegister = async (req, res) => {
 const userLog = async (req, res) => {
   const userData = req.body;
   try {
-   const user= await userService.userLogin(userData);
-    const authToken=createAuthToken(user);
+    const user = await userService.userLogin(userData);
+    const token = createAuthToken(user);
     // console.log(authToken);
-   res.cookie("authtoken",authToken);
-  //  localStorage.setItem('key',data);//use in local browser stroage for large storage
-res.status(201).json({ ...user, authToken});
+    res.cookie("authToken", token, { httpOnly: true });
+    //  localStorage.setItem('key',data);//use in local browser stroage for large storage
+    res.status(201).json({ ...user, token });
     // res.send("user login successfully");
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
-export { userRegister, userLog };
+  const logout = async (req, res) => {
+     res.clearCookie("authToken");
+      res.json({
+        status:"OK",
+      })
+};
+export { userRegister, userLog, logout };

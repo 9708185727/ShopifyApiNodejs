@@ -1,7 +1,7 @@
 import { query } from "express";
 import Product from "../models/Product.js";
-const createProduct = async (data) => {
-  return await Product.create(data);
+const createProduct = async (data,userId) => {
+  return await Product.create({...data, createdBy:userId});
   // await Product.create({
   //   name:data.name,
   //  description:data.description,
