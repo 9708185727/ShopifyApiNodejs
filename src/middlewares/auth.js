@@ -1,17 +1,26 @@
 import jwt from "jsonwebtoken";
 
 function auth(req, res, next) {
- 
-    const cookie = req.headers.cookie;
-    console.log(cookie);
+ const authHeader=req.headers?.authorization;
+ let authToken;
+ if(authHeader&&authHeader.startsWith("Bearer "))
+ {
+  authToken=authHeader.split(" ")[1]
 
-    if (!cookie) return res.status(401).send("Unauthorized");
+ }
+ else{
+  const cookie = req.headers.cookie;
+  // console.log(cookie);
 
-    // Extract the token from the cookie (assuming it's in the format 'authToken=YOUR_TOKEN')
-    const authToken = cookie.split("=")[1];
+  if (!cookie) return res.status(401).send("Unauthorized");
+   // Extract the token from the cookie (assuming it's in the format 'authToken=YOUR_TOKEN')
+   const authToken = cookie.split("=")[1];
 
-    if (!authToken) return res.status(401).send("Unauthorized");
+  
 
+ }
+  
+ if (!authToken) return res.status(401).send("Unauthorized");
     // Verify the JWT token
     jwt.verify(authToken, process.env.JWT_SECRET, function (error, data) {
       if (error) {

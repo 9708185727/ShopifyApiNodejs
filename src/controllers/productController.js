@@ -16,6 +16,7 @@ const getAllProducts = async (req, res) => {
   try {
     const getData = await productService.getProduct(req.query);
     res.status(201).json(getData);
+    console.log(req.query)
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -78,11 +79,30 @@ const deleteProduct = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
-
+const getAllCategories = async (req, res) => {
+  try {
+    const categories= await productService.getCategories();
+    res.status(201).json(categories);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+  
+};
+const getTotalSumProduct = async (req, res) => {
+  try {
+    const totalProduct= await productService.getTotalProducts();
+    res.status(201).json(totalProduct);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+  
+};
 export {
   getAllProducts,
   getProductById,
   addProduct,
   updateProduct,
   deleteProduct,
+  getAllCategories,
+  getTotalSumProduct,
 };

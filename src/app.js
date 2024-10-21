@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   // res.send('homepage');
   //JSON =>JavaScript Object Notation
   res.status(500).json({
-    appName: "code it",
+    appName: "shopfiyGhar",
     version:"1.0.0",
     port:PORT,
   });
