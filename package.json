@@ -1,6 +1,6 @@
 {
   "name": "codeit",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "this is for practice day 1st",
   "main": "index.js",
   "type": "module",

@@ -1,8 +1,0 @@
-[{
-    "id":"1",
-    "name":"Wireless Mouse",
-    "description":"Ergonomic wireless mouse with adjustable DPI.",
-    "price":29.99,
-    "category":"Electronics",
-    "stock":100},
-{"id":"2","name":"Mechanical Keyboard","description":"RGB backlit mechanical keyboard with customizable keys.","price":79.99,"category":"Electronics","stock":50},{"id":"3","name":"Smartwatch","description":"Waterproof smartwatch with heart rate monitor.","price":199.99,"category":"Wearables","stock":30},{"id":"4","name":"Electronics fan","description":"RGB fan.","price":600.99,"category":"Electronics","stock":40},{"id":"5","name":"Electronics washingmachine","description":"RGB fan.","price":600000.99,"category":"Electroincs machine","stock":5}]
