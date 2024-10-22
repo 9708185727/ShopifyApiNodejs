@@ -1,36 +1,40 @@
 import jwt from "jsonwebtoken";
 
 function auth(req, res, next) {
- const authHeader=req.headers?.authorization;
- let authToken;
- if(authHeader&&authHeader.startsWith("Bearer "))
- {
-  authToken=authHeader.split(" ")[1]
+  try {
+    const authHeader = req.headers?.authorization;
+    let authToken;
 
- }
- else{
-  const cookie = req.headers.cookie;
-  // console.log(cookie);
+    // Check if the authorization header contains a Bearer token
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      authToken = authHeader.split(" ")[1];
+    } else {
+      // If there's no Bearer token, try to get the token from cookies
+      const cookie = req.headers.cookie;
+      if (!cookie) return res.status(401).send("Unauthorized");
 
-  if (!cookie) return res.status(401).send("Unauthorized");
-   // Extract the token from the cookie (assuming it's in the format 'authToken=YOUR_TOKEN')
-   const authToken = cookie.split("=")[1];
+      // Extract the token from the cookie (assuming it's in the format 'authToken=YOUR_TOKEN')
+      authToken = cookie.split("=")[1];
+    }
 
-  
+    if (!authToken) return res.status(401).send("Unauthorized");
 
- }
-  
- if (!authToken) return res.status(401).send("Unauthorized");
     // Verify the JWT token
     jwt.verify(authToken, process.env.JWT_SECRET, function (error, data) {
       if (error) {
-        // If token verification fails, send a 403 (Forbidden) response
+        // If token verification fails, send an Unauthorized response
         return res.status(401).send("Unauthorized");
       }
+
+      // Attach user data to request
       req.user = data.data;
       next();
     });
-
+  } catch (error) {
+    // Catch any unexpected errors and send a 500 (Internal Server Error) response
+    console.error("Error in auth middleware:", error);
+    return res.status(500).send("Internal Server Error");
+  }
 }
 
 export default auth;
