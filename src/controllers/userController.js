@@ -3,11 +3,13 @@ import userService from "../services/userService.js";
 
 const userRegister = async (req, res) => {
   const userData = req.body;
+  console.log(userData)
   if (!userData.name) return res.status(422).send("required data name");
+  if (!userData.address) return res.status(422).send("required data address");
   if (!userData.phone) return res.status(422).send("required data phone");
   if (!userData.email) return res.status(422).send("required data email");
   if (!userData.password) return res.status(422).send("required data password");
-  if (userData.password !== userData.confirmpassword) {
+  if (userData.password !== userData.confirmPassword) {
     return res.status(400).send("password and confirm password doesnot match");
   }
   if (userData.password.length < 8) {

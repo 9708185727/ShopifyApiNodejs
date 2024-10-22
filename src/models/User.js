@@ -20,7 +20,7 @@ import mongoose from "mongoose";
     },
     email:{
         type:String,
-        required:[true, 'Password is required'],
+        required:[true, 'Email is required'],
         trim:true,
         lowercase:true,
         unique:true,
