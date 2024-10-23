@@ -17,7 +17,8 @@ dotenv.config();
 connectDB();
 app.use(cookieParser());
 app.use(cors({
-  origin:"https://shopfiyghar.vercel.app"
+  // origin:"https://shopfiyghar.vercel.app"
+  origin:"http://localhost:3000"
 }))
 const PORT=process.env.PORT;
 
