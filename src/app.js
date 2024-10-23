@@ -18,7 +18,7 @@ connectDB();
 app.use(cookieParser());
 app.use(cors({
   // origin:"https://shopfiyghar.vercel.app"
-  origin:process.env.APP_URI
+  origin:process.env.APP_URL,
 }))
 const PORT=process.env.PORT;
 
