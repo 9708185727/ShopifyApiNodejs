@@ -1,0 +1,24 @@
+[
+    {
+        "id":1,
+        "userId":1,
+        "title":"the times",
+        "content":"this loream isum dolor sit amet, consectetur "
+    },
+    {
+        "id":2,
+        "userId":1,
+        "title":"the Roman",
+        "content":"this loream isum dolor sit amet, consectetur "
+    },
+    {
+        "id":3,
+        "userId":2,
+        "title":"times Square",
+        "content":"this loream isum dolor sit amet, consectetur "
+    }
+    
+    
+    
+    
+]

@@ -1,0 +1,21 @@
+[
+    {
+        "id":1,
+        "postId":1,
+        "comment":"this loream isum dolor sit amet, consectetur "
+    }, 
+    {
+        "id":2,
+        "postId":2,
+      
+        "commet":"this loream isum dolor sit amet, consectetur "
+    },
+    {
+        "id":3,
+        "postId":2,
+      
+        "commet":"this loream isum dolor sit amet, consectetur "
+    }
+
+    
+]
