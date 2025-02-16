@@ -34,14 +34,29 @@ if(!userExisting) throw new Error("user not exists");
 const isMatch=bcrypt.compareSync(data.password,userExisting.password);
 
 if(!isMatch){
-    throw  Error('password  doesnot match');
+    throw  Error('Password  does not Match');
 }
    
 return userExisting;
 
 };
+const getUser= async (query) => {
+  const limit = query?.limit || 10;
+  const sort = query?.sort ? JSON.parse(query.sort) : {};
+  const filters = query?.filters ? JSON.parse(query.filters) : {};
+  const page = query?.page || 1;
+  const offset = (page - 1) * limit;
+  const customQuery = Object.entries(filters).reduce((acc, [key, value]) => {
+    const result = { ...acc, [key]: new RegExp(value, "i") };
+
+    return result;
+  }, {});
+
+  return await User.find(customQuery).limit(limit).sort(sort).skip(offset);
+};
 
 export default {
   userCreate,
   userLogin,
+  getUser,
 };

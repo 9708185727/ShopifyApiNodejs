@@ -47,4 +47,15 @@ const userLog = async (req, res) => {
         status:"OK",
       })
 };
-export { userRegister, userLog, logout };
+const getAllUser = async (req, res) => {
+  try {
+    const getData = await userService.getUser(req.query);
+    res.status(201).json(getData);
+    console.log(req.query)
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+  // res.json(products)
+};
+
+export { userRegister, userLog, logout,getAllUser };

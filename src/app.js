@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser'
 import products from './routes/products.js';
+import contacts from './routes/contacts.js';
 import auth from "./routes/auth.js"
 import connectDB from "./routes/database.js";
 import logger from "./middlewares/logger.js";
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/products",products);
 app.use("/api/auth",auth)
+app.use("/api/contact",contacts)
 
 
 // app.get("/about",(req,res)=>{
