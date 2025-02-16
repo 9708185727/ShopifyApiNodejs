@@ -19,8 +19,8 @@ const contactSchema=new mongoose.Schema({
 
     message:{
         type:String,
-        minlength:[6,"min length is 6"],
-        maxlength:[20,"maximum length is 20 "],
+     
+       
         required:[true, 'message is required'],
     },
     
