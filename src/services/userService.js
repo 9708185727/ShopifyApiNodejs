@@ -43,7 +43,7 @@ const sendResetPasswordLink = async (data) => {
       process.env.JWT_SECRET_RESET,
       { expiresIn: "10m" }
     );
-    const ResetLink = `http://localhost:3000/reset-password?token=${resetToken}`;
+    const ResetLink = `${process.env.APP_URL}/reset-password?token=${resetToken}`;
     // console.log(ResetLink);
     return {
       success: true,
