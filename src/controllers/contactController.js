@@ -9,9 +9,8 @@ const addContact=async(req,res)=>{
     if (!data.message) return res.status(422).send("contact message is required ");
     try {
       const createdContact = await createContact(data);
-  
       res.status(201).json(createdContact);
-    } catch (error) {
+    } catch (error){
       res.status(400).send(error.message);
     }
 }

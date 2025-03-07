@@ -7,6 +7,10 @@ import mongoose from "mongoose";
 
     },
     address:String,
+    image:{
+        type:String,
+        required:true,
+    },
     phone:{
         type:Number,
         required: [true, 'Phone number is required'],
@@ -33,7 +37,7 @@ import mongoose from "mongoose";
         
     },
 
- 
+
     password:{
         type:String,
         required:[true, 'Password is required'],

@@ -9,7 +9,6 @@ import productService from "../services/productService.js";
 //   `${__dirname}/../../data/products.json`,
 //   "utf-8"
 // );
-
 // const products = JSON.parse(rawData);
 
 const getAllProducts = async (req, res) => {
