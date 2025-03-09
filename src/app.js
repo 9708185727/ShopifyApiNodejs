@@ -18,18 +18,19 @@ app.use(bodyParser.json());
 dotenv.config();
 connectDB();
 app.use(cookieParser());
+app.use(cors({
+  //  origin:"https://shopfiyghar.vercel.app"
+  origin:process.env.APP_URL,
+}))
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+
+
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
 
-app.use(cors({
-  //  origin:"https://shopfiyghar.vercel.app"
-  origin:process.env.APP_URL,
-}))
+
 app.use("/uploads", express.static("./uploads"));
 const PORT=process.env.PORT;
 
