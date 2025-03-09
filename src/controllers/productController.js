@@ -46,7 +46,6 @@ const addProduct = async (req, res) => {
   if (!data.price) return res.status(422).send("product price is required ");
   try {
     const createdProduct = await productService.createProduct(data, userId);
-
     res.status(201).json(createdProduct);
   } catch (error) {
     res.status(400).send(error.message);
