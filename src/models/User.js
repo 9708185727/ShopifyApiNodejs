@@ -9,7 +9,7 @@ import mongoose from "mongoose";
     address:String,
     image:{
         type:String,
-        required:true,
+      
     },
     phone:{
         type:Number,
