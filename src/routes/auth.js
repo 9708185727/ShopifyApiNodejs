@@ -2,6 +2,7 @@ import { userRegister,userLog,logout, getAllUser, ForgotPassword, ResetPassword}
 import express from "express";
 import auth from "../middlewares/auth.js";
 import roleBaseAuth from "../middlewares/roleBasedAuth.js";
+import multer from "multer";
 // import { upload } from "../middlewares/upload.js";
 
 const storage = multer.memoryStorage(); // Store file in memory
