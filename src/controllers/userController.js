@@ -8,11 +8,11 @@ const userRegister = async (req, res) => {
   
   const image = req.file ? `./uploads/${req.file.filename}` : "";
 
-  console.log(image);
+  // console.log(image);
 
   if (!userData.name) return res.status(422).send("required data name");
   if (!userData.address) return res.status(422).send("required data address");
-  if (!image) return res.status(422).send("required data image file");
+  // if (!image) return res.status(422).send("required data image file");
   if (!userData.phone) return res.status(422).send("required data phone");
   if (!userData.email) return res.status(422).send("required data email");
   if (!userData.password) return res.status(422).send("required data password");
