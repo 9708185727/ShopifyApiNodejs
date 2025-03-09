@@ -9,7 +9,7 @@ const userCreate = async (data) => {
     return await User.create({
       name: data.name,
       address: data.address,
-      image:data.image,
+      // image:data.image,
 
       phone: data.phone,
       email: data.email,

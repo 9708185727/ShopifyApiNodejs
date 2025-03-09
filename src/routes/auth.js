@@ -11,6 +11,7 @@ const router=express.Router();
 
 
 router.post("/register",upload.single("image"),userRegister);
+router.post("/register",userRegister);
 router.post("/login",userLog);
 router.post("/logout",logout);
 router.post("/forgot-password",ForgotPassword);

@@ -6,7 +6,7 @@ const userRegister = async (req, res) => {
   console.log(userData);
   console.log(req.file);
   
-  const image = req.file ? `./uploads/${req.file.filename}` : "";
+  // const image = req.file ? `./uploads/${req.file.filename}` : "";
 
   // console.log(image);
 
@@ -26,7 +26,7 @@ const userRegister = async (req, res) => {
   const data = {
     name: userData.name,
     phone: userData.phone,
-    image: image,  // Correct usage
+    // image: image,  // Correct usage
     address: userData.address,
     email: userData.email,
     password: userData.password,
